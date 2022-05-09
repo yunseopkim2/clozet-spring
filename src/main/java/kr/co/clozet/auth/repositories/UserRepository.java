@@ -1,7 +1,7 @@
-package kr.co.clozet.repositories;
+package kr.co.clozet.auth.repositories;
 
 
-import kr.co.clozet.domains.User;
+import kr.co.clozet.auth.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

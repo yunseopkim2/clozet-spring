@@ -1,4 +1,4 @@
-package kr.co.clozet.domains;
+package kr.co.clozet.auth.domains;
 
 
 import lombok.Data;
