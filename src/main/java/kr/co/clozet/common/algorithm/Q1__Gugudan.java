@@ -1,4 +1,7 @@
 package kr.co.clozet.common.algorithm;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.Random;
 import java.util.Scanner;
 /**
@@ -36,8 +39,29 @@ public class Q1__Gugudan {
             }
         }
     } // main
-    static void calc(){
+    @Data
+    @AllArgsConstructor
+    static class Calculator{
 
+        private int num1;
+        private String opcode;
+        private int num2;
+        @Override public String toString(){
+
+            int res = 0;
+            switch (opcode){
+                case "+": res = num1 + num2; break;
+                case "-": res = num1 - num2; break;
+                case "*": res = num1 * num2; break;
+                case "/": res = num1 / num2; break;
+            }
+            return num1 + " "+opcode+" "+num2 +" = "+res;
+        }
+    }
+    static void calc(){
+        Scanner s = new Scanner(System.in);
+        System.out.println("숫자1, 숫자2, 연산자");
+        System.out.println(new Calculator(s.nextInt(), s.next(), s.nextInt()));;
     }
 
     static void bmi(){
@@ -149,7 +173,6 @@ public class Q1__Gugudan {
     }
     static void lotto(){
         System.out.println("06 로또");
-        Random rand = new Random();
         String res = "";
         int[] lotto = new int[6];
         for (int i = 0; i < 6; i++) {
