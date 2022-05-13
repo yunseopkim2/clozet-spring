@@ -5,13 +5,11 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
-
 /**
- * packageName:
- * fileName        :
+ * packageName: kr.co.clozet.common.dataStructure
+ * fileName        : Box
  * author           : kimyunseop
- * date               : 2022-05-09
+ * date               : 2022-05-12
  * ================================
  * DATE          AUTHOR       NOTE
  * ================================
@@ -36,7 +34,7 @@ public class Box<T> {
         public T get(int i){
             return list.get(i);
         }
-    public List<T> get(){
+    public ArrayList<T> get(){
             return list;
         }
         public int size(){
