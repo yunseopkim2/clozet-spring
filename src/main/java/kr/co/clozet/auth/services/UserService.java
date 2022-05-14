@@ -28,4 +28,7 @@ public interface UserService {
     boolean existsById(String userid);
 
     User getOne(Long id);
+    //custom
+
+    List<User> findByUserName(String name);
 }
