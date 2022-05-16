@@ -1,13 +1,11 @@
 package kr.co.clozet.common.dataStructure;
-import static kr.co.clozet.common.lambda.Lambda.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -21,66 +19,9 @@ import java.util.stream.Collectors;
  * 2022-02-19   kimyunseop   최초 생성
  */
 public class AppleList {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        AppleService service = new AppleServiceImpl();
-        while(true) {
-            System.out.println("0.Exit 1.save 2.update 3.delete 4.findById 5.findByOrigin 6.findAll 7.count 8.clear");
-            switch (s.next()) {
-                case "0":
-                    break;
-                case "1":
-                    Apple aa = new Apple.Builder()
-                            .origin("영동")
-                            .color("RED")
-                            .price(1000)
-                            .build();
-                    service.save(aa);
-                    Apple bb = new Apple.Builder()
-                            .origin("영동")
-                            .color("BLUE")
-                            .price(1500)
-                            .build();
-                    service.save(bb);
-                    Apple cc = new Apple.Builder()
-                            .origin("풍기")
-                            .color("RED")
-                            .price(2000)
-                            .build();
-                    service.save(cc);
-                    break;
-                case "2":
-                    AppleList up = new AppleList();
-                    break;
-                case "3":
-                    Apple temp = new Apple();
-                    System.out.println(temp);
-                    break;
-                case "4":
-                    System.out.println("찾을 아이디 입력하세요.");
-                    System.out.println(service.findById(s.nextInt()));
-                    break;
-                case "5":
-                    System.out.println(service.findByOrigin("영동"));
-                    break;
-                case "6":
-                    System.out.println(service.findAll());
-                    break;
-                case "7":
-                    System.out.println(service.count());
-                    break;
-                case "8":
-                    service.clear();
-                    break;
-                case "9":
 
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-    @Data @NoArgsConstructor
+
+    @Data
     public static class Apple{
         private String color, origin;
         private int price;
@@ -109,7 +50,7 @@ public class AppleList {
     interface AppleService{
         void save(Apple apple);
         void update(Apple apple, int i);
-        void delete(Apple apple);
+        boolean delete(Apple apple);
         List<Apple> findAll();
         List<Apple> findByOrigin(String origin);
         List<Apple> findByColor(String color);
@@ -130,8 +71,9 @@ public class AppleList {
         }
 
         @Override
-        public void delete(Apple apple) {
+        public boolean delete(Apple apple) {
             list.remove(apple);
+            return false;
         }
 
         @Override
@@ -174,5 +116,51 @@ public class AppleList {
             list.clear();
         }
     }
+    @Test
+    void applelist (){
+        Scanner s = new Scanner(System.in);
+        AppleService service = new AppleServiceImpl();
+        System.out.println("0.Exit 1.save 2.update 3.delete 4.findById 5.findByOrigin 6.findAll 7.count 8.clear");
+        System.out.println("1.save");
+        Apple aa = new Apple.Builder()
+                .origin("영동")
+                .color("RED")
+                .price(1000)
+                .build();
+        service.save(aa);
+        Apple bb = new Apple.Builder()
+                .origin("영동")
+                .color("BLUE")
+                .price(1500)
+                .build();
+        service.save(bb);
+        Apple cc = new Apple.Builder()
+                .origin("풍기")
+                .color("RED")
+                .price(2000)
+                .build();
+        service.save(cc);
+
+        System.out.println("2.update");
+        AppleList up = new AppleList();
+        System.out.println("3.delete");
+        System.out.println(service.delete(new Apple.Builder()
+                .origin("서울")
+                .color("YELLOW")
+                .price(20000)
+                .build()));
+        System.out.println("4.findById");
+        System.out.println("찾을 아이디 입력하세요.");
+        System.out.println(service.findById(s.nextInt()));
+
+        System.out.println("5.findByOrigin");
+        System.out.println(service.findByOrigin("영동"));
+        System.out.println("6.findAll");
+        System.out.println(service.findAll());
+
+        System.out.println("7.count");
+        System.out.println(service.count());
+        System.out.println("8.clear");
+        service.clear();};
 
 }

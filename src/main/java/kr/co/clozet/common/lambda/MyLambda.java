@@ -30,6 +30,6 @@ public class MyLambda {
         int operator(Integer arg);
     }
     @FunctionalInterface interface MathOperation{
-        int execute(int a, int b);
+        int execute(int a, int b, int c);
     }
 }
