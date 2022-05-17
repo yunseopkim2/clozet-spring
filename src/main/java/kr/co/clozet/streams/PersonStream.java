@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * packageName:
  * fileName        :
  * author           : kimyunseop
- * date               : 2022-05-09
+ * date               : 2022-05-16
  * ================================
  * DATE          AUTHOR       NOTE
  * ================================
@@ -30,39 +30,47 @@ public class PersonStream {
     public static class Person {
         private String name, ssn;
 
+        private boolean genderChek(String ssnGenderPos){
+            return ssn.substring(7,8).equals(ssnGenderPos);
+        }
+        /**   @Override
+        public String toString() {
+            String gender =(getGenderChecker("1")||getGenderChecker("3"))? "남자" :"여자";
+            int year = Integer.parseInt(ssn.substring(0,2));
+            if(getGenderChecker("1")){year+= 1900;}
+            else if(getGenderChecker("2")){year+= 1900;}
+            else {year+= 2000;}
+            String age = String.valueOf(2022-year+1);  // 1의 의미는 한국나이로 태어나면 1살부터 시작
+
+            return String.format("이름 : %s 성별 : %s 나이 : %s", name, gender, age);
+        }*/
         @Override
         public String toString() {
-            String s = ssn.substring(7);
+          String s = ssn.substring(7);
             int age = Integer.parseInt(ssn.substring(0,2));
             int ages = Integer.parseInt(ssn.substring(7));
-            if (ages == 1|| ages ==2){
+            String gender = (s.equals("1") || s.equals("3") ? "남자" : "여자");
+            if (ages == 1 || ages ==2){
                 ages = (122 -age)%100;
             }else {
                 ages = (22 -age);
             }
-            return String.format("이름 : %s 나이 : %s", name, ages);
+            return String.format("이름 : %s 성별 : %s 나이 : %s", name, gender, ages);
 //            if(gender.equals("1") || gender.equals("3")) {
 //                gender = "남자";
 //            } else {
 //                gender = "여자";
 //            }
-//            String gender = (s.equals("1") || s.equals("3") ? "남자" : "여자");
 //            return String.format("이름 : %s 성별 : %s", name, gender);
 
         }
 
     }
 
-    interface PersonService{
+    @FunctionalInterface interface PersonService{
         Person search(List<Person> person);
+    }
 
-    }
-    static class PersonServiceImpl implements PersonService{
-        @Override
-        public Person search(List<Person> person) {
-            return person.stream().filter(e->e.getName().equals("홍길동")).collect(Collectors.toList()).get(0);
-        }
-    }
     @Test
     void personStreamTest(){
         // 홍길동, 900120-1  김유신, 970602-1 유관순, 040920-4 남성, 여성 판단 로직
@@ -72,7 +80,11 @@ public class PersonStream {
                 Person.builder().name("김유신").ssn("970602-1").build(),
                 Person.builder().name("유관순").ssn("040920-4").build()
         );
-        System.out.println(new PersonServiceImpl().search(person));
+        PersonService ps = persons -> persons
+                .stream()
+                .filter(e->e.getName().equals("홍길동"))
+                .collect(Collectors.toList()).get(0);
+        System.out.println(ps.search(person));
     }
 }
 
