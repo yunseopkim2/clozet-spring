@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,11 +27,11 @@ public class PrimeNumber {
     @Builder
     private static class Solution {
         int start, end;
-        int[] primes;
+        List<Solution> primes;
 
         @Override
         public String toString() {
-            return String.format("시작값 : %d 끝값 : %d 중간값: %s", start,end, Arrays.toString(primes));
+            return String.format("시작값 : %d 끝값 : %d 중간값: %s", start,end, primes);
         }
     }
 
@@ -43,23 +44,24 @@ public class PrimeNumber {
         int [] primes = {};
         SolutionService sol = x ->{
             int count = 0;
-            int min = 0;
-            int max = 100;
-            for(int i = 2; i < max; i++){
+            for(int i = x.getStart(); i < x.getEnd(); i++){
+                boolean check = true;
                 for(int j =2; j<=i; j++){
                     if(i%j==0){
-                        count++;
+                        check = false;
+
                     }
+                    else {
+                        //x.getPrimes().add(i);
+                    }
+
                 }
-                if(count==1){
-                    System.out.println(i);
-                }
-                count = 0;
+
             }
-            return Solution.builder().start(min).end(max).build();
+            return Solution.builder().start(1).end(100).build();
         } ;
 
-        System.out.println(sol.soltion(Solution.builder().primes(primes).build()));
+        System.out.println(sol.soltion(Solution.builder().primes(new ArrayList<>()).build()));
 
     }
 
