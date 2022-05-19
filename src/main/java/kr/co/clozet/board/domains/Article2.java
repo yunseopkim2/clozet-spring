@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table
 @Component
 @Entity
-public class Article {
+public class Article2 {
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(nullable = false) private String projects;
         @Column(nullable = false)private String startData;

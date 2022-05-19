@@ -17,6 +17,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class User {
     @Id
     @Column(name = "user_id")

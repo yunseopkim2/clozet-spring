@@ -1,7 +1,6 @@
 package kr.co.clozet.board.controllers;
 
-import kr.co.clozet.board.domains.Article;
-import kr.co.clozet.board.domains.Board;
+import kr.co.clozet.board.domains.Article2;
 import kr.co.clozet.board.services.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,22 +17,22 @@ import java.util.Optional;
 public class ArticleController {
     private final ArticleService service;
     @PostMapping("/article")
-    public String Article(Article article){
+    public String Article(Article2 article){
         return null;
     }
 
     @GetMapping("/findAll")
-    public List<Article> findAll() {
+    public List<Article2> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/findAll/sort")
-    public List<Article> findAll(Sort sort) {
+    public List<Article2> findAll(Sort sort) {
         return service.findAll(sort);
     }
 
     @GetMapping("/findAll/pageable")
-    public Page<Article> findAll(Pageable pageable) {
+    public Page<Article2> findAll(Pageable pageable) {
         return service.findAll(pageable);
     }
 
@@ -43,15 +42,15 @@ public class ArticleController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody Article article) {return service.delete(article);}
+    public String delete(@RequestBody Article2 article) {return service.delete(article);}
 
     @PostMapping("/join")
-    public String save(@RequestBody Article article) {
+    public String save(@RequestBody Article2 article) {
         return service.save(article);
     }
 
     @GetMapping("/findById/{userid}")
-    public Optional<Article> findById(@PathVariable String userid) {
+    public Optional<Article2> findById(@PathVariable String userid) {
         return service.findById(userid);
     }
 

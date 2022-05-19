@@ -1,5 +1,5 @@
 package kr.co.clozet.board.services;
-import kr.co.clozet.board.domains.Article;
+import kr.co.clozet.board.domains.Article2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -8,19 +8,19 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ArticleService {
-    List<Article> findAll();
+    List<Article2> findAll();
 
     long count();
 
-    String delete(Article board);
+    String delete(Article2 board);
 
-    String save(Article board);
+    String save(Article2 board);
 
-    Optional<Article> findById(String userid);
+    Optional<Article2> findById(String userid);
 
     boolean existsById(String userid);
 
-    List<Article> findAll(Sort sort);
+    List<Article2> findAll(Sort sort);
 
-    Page<Article> findAll(Pageable pageable);
+    Page<Article2> findAll(Pageable pageable);
 }

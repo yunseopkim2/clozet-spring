@@ -1,6 +1,6 @@
 package kr.co.clozet.board.services;
 
-import kr.co.clozet.board.domains.Board;
+import kr.co.clozet.board.domains.Board2;
 import kr.co.clozet.board.repositories.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,22 +17,22 @@ public class BoardServiceImpl implements BoardService {
     private final BoardRepository repository;
 
     @Override
-    public List<Board> findAll() {
+    public List<Board2> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<Board> findAll(Sort sort) {
+    public List<Board2> findAll(Sort sort) {
         return repository.findAll();
     }
 
     @Override
-    public Page<Board> findAll(Pageable pageable) {
+    public Page<Board2> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public String delete(Board board) {
+    public String delete(Board2 board) {
         repository.delete(board);
         return null;
 
@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Optional<Board> findById(String userid) {
+    public Optional<Board2> findById(String userid) {
         return Optional.empty();
     }
 
@@ -54,7 +54,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board save(Board board) {
+    public Board2 save(Board2 board) {
         return repository.save(board);
     }
 }

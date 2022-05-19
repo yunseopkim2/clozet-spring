@@ -1,24 +1,31 @@
 package kr.co.clozet.soccer.domains;
 
+import com.sun.istack.NotNull;
 import kr.co.clozet.soccer.services.TeamService;
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Component
-@Table(name = "teamId")
-@Data
 @Entity
+@Table(name = "teams")
 public class Team {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String teamId;
+    @Id
+    @Column(name = "team_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
+    @Column(nullable = false) private String teamId;
+    @Column(nullable = false) private String stadiumId;
     private String regionName;
     private String teamName;
     private String eTeamName;
-    private String origYYYY;
-    private String stadiumId;
+    private String origYyyy;
     private String zipCode1;
     private String zipCode2;
     private String address;
@@ -26,6 +33,9 @@ public class Team {
     private String tel;
     private String fax;
     private String homepage;
-    private String ownerName;
+    private String owner;
+
+    @OneToMany(mappedBy = "team")
+    List<Player> players = new ArrayList<>();
 
 }

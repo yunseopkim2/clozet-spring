@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table
-public class Board {
+public class Board2 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false) private String projects;
     @Column(nullable = false)private String startData;
