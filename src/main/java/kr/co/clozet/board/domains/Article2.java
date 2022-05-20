@@ -1,12 +1,15 @@
 package kr.co.clozet.board.domains;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Data
-@Table
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "articles2")
 @Component
 @Entity
 public class Article2 {

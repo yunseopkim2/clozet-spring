@@ -1,14 +1,17 @@
 package kr.co.clozet.board.domains;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
 @Component
-@Data
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table
+@Table(name = "boards2")
 public class Board2 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false) private String projects;

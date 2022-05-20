@@ -11,12 +11,13 @@ import java.util.List;
 
 @Builder
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Component
 @Entity
-@Table(name = "teams")
+@Table(name="teams")
 public class Team {
+
     @Id
     @Column(name = "team_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
@@ -37,5 +38,6 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     List<Player> players = new ArrayList<>();
+
 
 }

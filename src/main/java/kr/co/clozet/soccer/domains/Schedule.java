@@ -8,12 +8,13 @@ import javax.persistence.*;
 
 @Builder
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Component
 @Entity
-@Table(name = "schedules")
+@Table(name="schedules")
 public class Schedule {
+
     @Id
     @Column(name = "schedule_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long scheduleNo;
@@ -28,4 +29,5 @@ public class Schedule {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stadium_no")
     private Stadium stadium;
+
 }
