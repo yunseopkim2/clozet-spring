@@ -38,6 +38,11 @@ public class ArticleServiceImpl implements ArticleService {
         repository.save(article);
         return null;
     }
+    @Override
+    public String update(Article2 article) {
+        //repository.put(user);
+        return "";
+    }
 
     @Override
     public Optional<Article2> findById(String userid) {

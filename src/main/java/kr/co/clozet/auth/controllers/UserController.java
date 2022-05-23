@@ -53,6 +53,10 @@ public class UserController {
 
     @GetMapping("/getOne/{id}")
     public User getOne(@PathVariable Long id) {return service.getOne(id);}
+    @PutMapping("/update")
+    public String update(@RequestBody User user) {
+        return service.update(user);
+    }
 
 }
 

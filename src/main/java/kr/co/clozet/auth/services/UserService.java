@@ -31,4 +31,6 @@ public interface UserService {
     //custom
 
     List<User> findByUserName(String name);
+
+    String update(User user);
 }

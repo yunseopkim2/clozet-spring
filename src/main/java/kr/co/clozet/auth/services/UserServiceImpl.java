@@ -49,7 +49,11 @@ public class UserServiceImpl implements UserService{
     public void put(User user) {
        //repository.put(user);
     }
-
+    @Override
+    public String update(User user) {
+        //repository.put(user);
+        return "";
+    }
     @Override
     public String delete(User user) {
        repository.delete(user);

@@ -19,6 +19,8 @@ interface TeamCustomRepository{
     @Query(value = "SELECT t.teamName AS teamName FROM Team t ORDER BY t.teamName ASC",
     nativeQuery = true)
     List<String> findTeamNamesAcs();
+
+    // 005-2. 수원팀의 ID는 ?
 }
 
 @Repository

@@ -16,6 +16,8 @@ public interface ArticleService {
 
     String save(Article2 board);
 
+    String update(Article2 article);
+
     Optional<Article2> findById(String userid);
 
     boolean existsById(String userid);

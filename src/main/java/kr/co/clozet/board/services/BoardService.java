@@ -25,4 +25,6 @@ public interface BoardService {
     boolean existsById(String userid);
 
     Board2 save(Board2 board);
+
+    String update(Board2 board);
 }

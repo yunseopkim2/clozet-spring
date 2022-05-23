@@ -1,5 +1,6 @@
 package kr.co.clozet.board.services;
 
+import kr.co.clozet.auth.domains.User;
 import kr.co.clozet.board.domains.Board2;
 import kr.co.clozet.board.repositories.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -56,5 +57,10 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Board2 save(Board2 board) {
         return repository.save(board);
+    }
+    @Override
+    public String update(Board2 board) {
+        //repository.put(user);
+        return "";
     }
 }

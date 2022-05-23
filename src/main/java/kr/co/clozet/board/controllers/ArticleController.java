@@ -1,5 +1,6 @@
 package kr.co.clozet.board.controllers;
 
+import kr.co.clozet.auth.domains.User;
 import kr.co.clozet.board.domains.Article2;
 import kr.co.clozet.board.services.ArticleService;
 import lombok.RequiredArgsConstructor;
@@ -57,5 +58,9 @@ public class ArticleController {
     @GetMapping("/existsById/{userid}")
     public boolean existsById(@PathVariable String userid) {
         return service.existsById(userid);
+    }
+    @PutMapping("/update")
+    public String update(@RequestBody Article2 article) {
+        return service.update(article);
     }
 }
