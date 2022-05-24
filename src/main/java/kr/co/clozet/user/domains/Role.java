@@ -1,9 +1,8 @@
-package kr.co.clozet.auth.domains;
+package kr.co.clozet.user.domains;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.parameters.P;
 
 import java.util.Arrays;
 

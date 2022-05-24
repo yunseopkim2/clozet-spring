@@ -1,4 +1,4 @@
-package kr.co.clozet.auth.controllers;
+package kr.co.clozet.user.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

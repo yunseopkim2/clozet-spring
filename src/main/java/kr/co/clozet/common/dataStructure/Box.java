@@ -3,7 +3,7 @@ package kr.co.clozet.common.dataStructure;
 import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-import kr.co.clozet.auth.domains.User;
+import kr.co.clozet.user.domains.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

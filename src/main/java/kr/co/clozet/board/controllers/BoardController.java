@@ -1,6 +1,5 @@
 package kr.co.clozet.board.controllers;
 
-import kr.co.clozet.auth.domains.User;
 import kr.co.clozet.board.domains.Board2;
 import kr.co.clozet.board.services.BoardService;
 import lombok.RequiredArgsConstructor;
