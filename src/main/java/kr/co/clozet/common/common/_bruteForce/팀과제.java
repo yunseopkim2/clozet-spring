@@ -1,17 +1,17 @@
-package kr.co.clozet.common.algorithm;
+package kr.co.clozet.common.common._bruteForce;
 import java.util.Scanner;
 /**
- * packageName: kr.co.clozet.common.common
- * fileName   :
+ * packageName: kr.co.clozet.common.common._bruteForce
+ * fileName   : 팀과제
  * author     : kimyunseop
- * date       : 2022-05-25
+ * date       : 2022-05-09
  * desc       :
  * ================================
  * DATE        AUTHOR        NOTE
  * ================================
- * 2022-05-25   kimyunseop  최초 생성
+ * 2022-05-09   kimyunseop  최초 생성
  */
-public class Q3__Team {
+public class 팀과제 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true){
@@ -42,20 +42,20 @@ public class Q3__Team {
         System.out.println(s);
     }
     static void teamLeaderSubject (String[] arr){
-        System.out.println("2.팀장이 맡은 과제만 출력하세요. 예) 김진영, 힙, 그래프 ");
+            System.out.println("2.팀장이 맡은 과제만 출력하세요. 예) 김진영, 힙, 그래프 ");
         String s = "";
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].equals("김진영")) {
-                for (int j = 0; j < 3; j++) {
-                    s += arr[i + j * 5] + ",";
-                }
-                if (i == 17) {
-                    break;
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i].equals("김진영")) {
+                    for (int j = 0; j < 3; j++) {
+                        s += arr[i + j * 5] + ",";
+                    }
+                    if (i == 17) {
+                        break;
+                    }
                 }
             }
+            System.out.println(s);
         }
-        System.out.println(s);
-    }
     static void queueManager (String[] arr) {
         System.out.println("3.큐를 담당한 사람을 출력하세요. 예) 큐를 담당한 사람: 권혜민 ");
         String s = "";
