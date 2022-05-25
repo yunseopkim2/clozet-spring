@@ -21,6 +21,7 @@ import java.util.Optional;
  * ================================
  * 2022-05-23   kimyunseop   최초 생성
  */
+
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements UserDetailsService {
