@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * packageName:
- * fileName        :
+ * packageName: kr.co.clozet.auth.filter
+ * fileName        : AuthFilter
  * author           : kimyunseop
  * date               : 2022-05-25
  * ================================

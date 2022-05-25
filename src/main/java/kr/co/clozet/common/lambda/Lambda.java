@@ -55,6 +55,14 @@ public class Lambda{
     }
     //int [] arr = new int[8];
     // = int[]::new
+    public static long longParse(String s){
+        Function<String, Long> f = Long::parseLong;
+        return f.apply(s);
+    }
+    public static float floatParse(String s){
+        Function<String, Float> f = Float::parseFloat;
+        return f.apply(s);
+    }
     public static int[] array(int arr){
         Function<Integer, int[]> f = int[]::new;
         return f.apply(arr);

@@ -1,6 +1,8 @@
 package kr.co.clozet.user.services;
 
+import kr.co.clozet.auth.domains.Messenger;
 import kr.co.clozet.user.domains.User;
+import kr.co.clozet.user.domains.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -9,28 +11,28 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    String login(User user);
-
+    UserDTO login(User user);
+    Messenger logout();
     List<User> findAll();
     List<User> findAll(Sort sort);
     Page<User> findAll(Pageable pageable);
 
-    long count();
+    Messenger count();
 
-    void put(User user);
+    Messenger put(User user);
 
-    String delete(User user);
+    Messenger delete(User user);
 
-    void save(User user);
+    Messenger save(User user);
 
     Optional<User> findById(String userid);
 
-    boolean existsById(String userid);
+    Messenger existsById(String userid);
 
-    User getOne(Long id);
+    Messenger getOne(Long id);
     //custom
 
     List<User> findByUserName(String name);
 
-    String update(User user);
+    Messenger update(User user);
 }

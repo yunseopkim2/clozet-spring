@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.nio.file.AccessDeniedException;
 
 /**
- * packageName:
- * fileName        :
+ * packageName: kr.co.clozet.auth.filter
+ * fileName        : AuthExceptionHandler
  * author           : kimyunseop
  * date               : 2022-05-25
  * ================================
