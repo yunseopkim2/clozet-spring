@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    UserDTO login(User user);
+    UserDTO login(UserDTO user);
     Messenger logout();
     List<User> findAll();
     List<User> findAll(Sort sort);

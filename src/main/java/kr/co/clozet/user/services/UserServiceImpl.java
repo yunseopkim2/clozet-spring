@@ -34,17 +34,26 @@ public class UserServiceImpl implements UserService{
     //모델이랑 엔티티를 바꿔주는것
 
     @Override
-    public UserDTO login(User user) {
+    public UserDTO login(UserDTO paramUser) {
         try{
-            UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-            User findUser = repository.findByUsername(user.getUsername()).orElse(null);
-            String pw = repository.findByUsername(user.getUsername()).get().getPassword();
-            boolean checkPassword = encoder.matches(user.getPassword(), pw);
-            String username = user.getUsername();
-            List<Role> roles = findUser.getRoles();
-            String token = checkPassword ? provider.createTokken(username, roles) : "Wrong Password";
-            userDTO.setToken(token);
-            return userDTO;
+            UserDTO returnUser = new UserDTO();
+            String username = paramUser.getUsername();
+            User findUser = repository.findByUsername(username).orElse(null);
+            if (findUser != null){
+                boolean checkPassword = encoder.matches(paramUser.getPassword(), findUser.getPassword());
+                if (checkPassword){
+                    returnUser = modelMapper.map(findUser, UserDTO.class);
+                    String token = provider.createTokken(username, returnUser.getRoles());
+                    returnUser.setToken(token);
+
+                }else {
+                    String token = "FAILURE";
+                    returnUser.setToken(token);
+                }
+            }else {
+                returnUser.setToken("FAILURE");
+            }
+            return returnUser;
         }catch (Exception e){
             throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
         }
