@@ -19,11 +19,9 @@ public interface UserService {
 
     Messenger count();
 
-    Messenger put(User user);
-
     Messenger delete(User user);
 
-    Messenger save(User user);
+    Messenger save(UserDTO user);
 
     Optional<User> findById(String userid);
 

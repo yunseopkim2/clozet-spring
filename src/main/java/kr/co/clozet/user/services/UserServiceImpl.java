@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static kr.co.clozet.common.lambda.Lambda.longParse;
-import static kr.co.clozet.common.lambda.Lambda.string;
+import static kr.co.clozet.common.lambda.Lambda.*;
 
 @RequiredArgsConstructor
 @Service
@@ -57,13 +56,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Messenger save(User user) {
+    public Messenger save(UserDTO user) {
         String result = "";
         if(repository.findByUsername(user.getUsername()).isEmpty()){
 
             List<Role> list = new ArrayList<>();
             list.add(Role.USER);
-            repository.save(User.builder().password(encoder.encode(user.getPassword())).roles(list).build());
+            repository.save(User.builder()
+                            .regDate(user.getRegDate())
+                            .username(user.getUsername())
+                            .email(user.getEmail())
+                            .name(user.getName())
+                    .password(encoder.encode(user.getPassword()))
+                    .roles(list).build());
             result = "SUCCESS";
         }else {
             result = "FAIL";
@@ -93,13 +98,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Messenger put(User user) {
-       //repository.put(user);
-        return null;
-    }
-    @Override
     public Messenger update(User user) {
-        return Messenger.builder().message(string(repository.put(user))).build();
+        return Messenger.builder().build();
     }
     @Override
     public Messenger delete(User user) {

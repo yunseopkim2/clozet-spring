@@ -4,7 +4,10 @@ import org.hibernate.dialect.Ingres9Dialect;
 import static kr.co.clozet.common.dataStructure.AppleList.Apple;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 import java.util.function.*;
 
@@ -35,12 +38,32 @@ public class Lambda{
         System.out.println("랜덤 주사위: "+Math.round(dice()));
         System.out.println("범위 내에 랜덤값:"+ random2(1,6));
         System.out.println(random(1,9));
+        System.out.println(date());
+        System.out.println(date1());
+        System.out.println(date3());
 
     }
     public static int integer(String arg){
         Function<String, Integer> f = Integer::parseInt;
         return f.apply(arg);
 
+    }
+    public static String date(){
+       // Supplier<Object> f = LocalDate::now;
+        Supplier<String> f = () -> string(LocalDate.now());
+        return f.get();
+    }
+    public static String date1(){
+        Supplier<Date> f = Date::new;
+        return String.valueOf(f.get());
+    }
+    public static Object date2(){
+        Supplier<Object> f = LocalDate::now;
+        return String.valueOf(f.get());
+    }
+    public static String date3(){
+        Supplier<String> f = () -> new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+        return f.get();
     }
     public static String string(Object o){
         Function<Object, String> f = String::valueOf;
@@ -80,7 +103,7 @@ public class Lambda{
         BiFunction<Integer, Integer, Integer> f = (min1, max2) -> (int)(Math.random()*max2)+min1;
         return f.apply(min, max);
     }
-    String choi(int i){
+    public static String choi(int i){
     Function<Integer, String> f = String::valueOf;
     return f.apply(i);
     }

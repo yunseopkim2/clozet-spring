@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 @Entity
 @Table(name = "stadiums")
-public class Stadium {
+public final class Stadium {
     @Id
     @Column(name = "stadium_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumNo;

@@ -18,6 +18,5 @@ interface UserCustomRepository{
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-    Messenger put(User user);
     Optional<User> findByUsername(String username);
 }
