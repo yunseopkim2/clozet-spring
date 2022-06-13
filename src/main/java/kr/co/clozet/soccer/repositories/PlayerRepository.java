@@ -37,5 +37,7 @@ interface PlayerCustomRepository{
 }
 
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, Long>{
+public interface PlayerRepository extends JpaRepository<Player, Long>, PlayerCustomRepository {
+    @Override
+    List<Player> findPlayers(String teamId, String familyName, String height);
 }

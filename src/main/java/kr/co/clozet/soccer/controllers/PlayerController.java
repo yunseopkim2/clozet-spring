@@ -1,8 +1,10 @@
 package kr.co.clozet.soccer.controllers;
 
 import kr.co.clozet.soccer.domains.Player;
+import kr.co.clozet.soccer.repositories.PlayerRepository;
 import kr.co.clozet.soccer.services.PlayerService;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -15,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/players")
 public class PlayerController {
-
+    private final PlayerRepository repository;
     private final PlayerService service;
 
     @PutMapping("/put")
@@ -64,5 +66,9 @@ public class PlayerController {
         return service.existsById(playerid);
     }
 
+    @Test
+    void test(){
+        repository.update("180", "120");
+    }
 
 }

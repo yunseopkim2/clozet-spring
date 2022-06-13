@@ -94,6 +94,12 @@ public class Lambda{
         Supplier<Double> s = Math::random;
         return (s.get() * 6) +1;
     }
+    public static int Atm(){
+        //BiFunction<Integer, Integer, Double> s = Math::random;
+        Supplier<Double> s = Math::random;
+        return (int)(s.get()*1001)+1;
+    }
+
     public static int random2(int min, int max){
         //BiFunction<Integer, Integer, Double> s = Math::random;
         Supplier<Double> s = Math::random;
@@ -103,6 +109,7 @@ public class Lambda{
         BiFunction<Integer, Integer, Integer> f = (min1, max2) -> (int)(Math.random()*max2)+min1;
         return f.apply(min, max);
     }
+
     public static String choi(int i){
     Function<Integer, String> f = String::valueOf;
     return f.apply(i);

@@ -1,5 +1,12 @@
 package kr.co.clozet.common.common._bruteForce;
 
+import lombok.*;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
+import static kr.co.clozet.common.lambda.Lambda.Atm;
+
 /**
  * packageName: kr.co.clozet.common.common
  * fileName   :ATM
@@ -40,4 +47,52 @@ package kr.co.clozet.common.common._bruteForce;
  */
 
 public class ATM {
-}
+    @Builder @Getter
+    @AllArgsConstructor @NoArgsConstructor
+    static class Solution{
+        private int num;
+        private int prev;
+        private int sum;
+        private int people;
+        private int [] arr;
+
+        @Override
+        public String toString() {
+            return "Solution{" +
+                    "num=" + num +
+                    ", prev=" + prev +
+                    ", sum=" + sum +
+                    ", people=" + people +
+                    ", arr=" + Arrays.toString(arr) +
+                    '}';
+        }
+    }
+    @FunctionalInterface interface SolutionService{
+        Solution solution(Solution s);
+    }
+
+    @Test
+    void testSolution(){
+
+         SolutionService f = e -> {
+            int [] arr = new int[e.getNum()];
+            for(int i =0; i < e.getNum(); i++){
+                arr[i] = e.getPeople();
+            }
+            Arrays.sort(arr);
+             System.out.println(Arrays.toString(arr));
+            int prev = 0;
+            int sum = 0;
+            for(int i = 0; i<arr.length; i++){
+                prev += arr[i];
+                sum += prev;
+
+            }
+            return Solution.builder().num(e.getNum()).people(e.getPeople()).prev(prev).sum(sum)
+                    .arr(arr).build();
+
+    };
+       Solution s =f.solution(Solution.builder().prev(Atm()).num(Atm()).people(Atm()).build());
+        System.out.println(f.solution(s));
+
+}}
