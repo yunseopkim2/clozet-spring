@@ -104,6 +104,11 @@ public class Lambda{
         Supplier<Double> s = Math::random;
         return (int)(s.get()*45)+1;
     }
+    public static int countStar(){
+        //BiFunction<Integer, Integer, Double> s = Math::random;
+        Supplier<Double> s = Math::random;
+        return (int)(s.get()*50);
+    }
 
     public static int random2(int min, int max){
         //BiFunction<Integer, Integer, Double> s = Math::random;

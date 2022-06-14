@@ -23,7 +23,17 @@ import java.util.Scanner;
 public class 소수찾기 {
     @Builder @Getter @AllArgsConstructor
     static class Solution{
+        private int a;
+
         @Override public String toString(){
+           return null;
+        }
+
+    }
+    @FunctionalInterface interface SolutionService{ Solution solution(Solution solution);}
+
+    static class Service{
+        static SolutionService solutionService = e ->{
             int a;
             a = 0;
             int count = 0;
@@ -41,11 +51,9 @@ public class 소수찾기 {
                 count = 0;
             }
 
-            return "";
-        }
-
+            return null;
+        };
     }
-    @FunctionalInterface static interface SolutionService{ Solution solution(Solution solution);}
 
     @Test
     void solution(){

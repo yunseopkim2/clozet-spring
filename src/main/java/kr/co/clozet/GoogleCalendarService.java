@@ -26,7 +26,7 @@ public class GoogleCalendarService {
 
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"),
-            ".credentials/calendar-java-quickstart"
+            "C:\\Users\\82107\\Desktop\\calendar"
     );
     private static FileDataStoreFactory DATA_STORE_FACTORY;
 
@@ -47,7 +47,7 @@ public class GoogleCalendarService {
     }
     public static Credential authorize() throws IOException{
         InputStream in = GoogleCalendarService.class
-                .getResourceAsStream("/client_secret.json");
+                .getResourceAsStream("/client_secret_228138040952-717bp42k0gf6jt8oqmb5rf8m4qrvjd0g.apps.googleusercontent.com.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
                 JSON_FACTORY, new InputStreamReader(in)
         );
