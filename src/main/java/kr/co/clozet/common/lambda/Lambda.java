@@ -99,6 +99,11 @@ public class Lambda{
         Supplier<Double> s = Math::random;
         return (int)(s.get()*1001)+1;
     }
+    public static int lotto(){
+        //BiFunction<Integer, Integer, Double> s = Math::random;
+        Supplier<Double> s = Math::random;
+        return (int)(s.get()*45)+1;
+    }
 
     public static int random2(int min, int max){
         //BiFunction<Integer, Integer, Double> s = Math::random;

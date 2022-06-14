@@ -1,8 +1,12 @@
 package kr.co.clozet.common.common._bruteForce;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import org.junit.jupiter.api.Test;
+
+import static kr.co.clozet.common.lambda.Lambda.lotto;
 
 /**
  * packageName: kr.co.clozet.common.common._bruteForce
@@ -76,30 +80,18 @@ import org.junit.jupiter.api.Test;
  * 2022-05-23   kimyunseop  최초 생성
  */
 public class 로또 {
-    @Data
+    @Getter
+    @Builder
     @AllArgsConstructor
     static class Solution{
 
-        private int num1;
-        private String opcode;
-        private int num2;
+        private String res;
+        private int lottonumber;
+
         @Override public String toString(){
 
             System.out.println("06 로또");
-            String res = "";
-            int[] lotto = new int[6];
-            for (int i = 0; i < 6; i++) {
-                lotto[i] = (int)(Math.random()*45) + 1;
-                for (int j = 0; j < i; j++) {
-                    if (lotto[i] == lotto[j])
-                        i--;
-                    break;
-                }
-            }
-            for (int i = 0; i < 6; i++) {
-                res += String.format(lotto[i] + " ");
-            }
-            System.out.println(res);
+
             return "";
         }
     }
@@ -108,6 +100,22 @@ public class 로또 {
     }
     @Test
     void testSolution(){
-
+        SolutionService f = e ->{
+        String res = "";
+        int[] lotto = new int[6];
+        for (int i = 0; i < 6; i++) {
+            lotto[i] = e.getLottonumber();
+            for (int j = 0; j < i; j++) {
+                if (lotto[i] == lotto[j])
+                    i--;
+                break;
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            res += String.format(lotto[i] + " ");
+        }
+        return Solution.builder().res(res).build();
+        };
+        Solution s = f.solution(Solution.builder().lottonumber(lotto()).build());
     }
 }
