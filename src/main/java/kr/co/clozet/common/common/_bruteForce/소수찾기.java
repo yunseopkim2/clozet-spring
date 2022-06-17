@@ -34,11 +34,10 @@ public class 소수찾기 {
 
     static class Service{
         static SolutionService solutionService = e ->{
-            int a;
-            a = 0;
+            int a = 0;
             int count = 0;
 
-            for (int i = 2; i <= a; i++) {
+            for (int i = 2; i <= e.a; i++) {
                 for (int j = 2; j <= i; j++) {
                     if (i % j == 0) {
                         count++;
@@ -57,6 +56,6 @@ public class 소수찾기 {
 
     @Test
     void solution(){
-
+        System.out.println(Service.solutionService.solution(Solution.builder().a(100).build()));
     }
 }

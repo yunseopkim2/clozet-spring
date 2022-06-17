@@ -36,6 +36,10 @@ dependencies {
 	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
+	implementation 'com.google.api-client:google-api-client:1.33.0'
+	implementation 'com.google.oauth-client:google-oauth-client-jetty:1.32.1'
+	implementation 'com.google.apis:google-api-services-calendar:v3-rev20211026-1.32.1'
+	implementation group: 'com.google.http-client', name: 'google-http-client-jackson2', version: '1.42.0'
 }
 
 tasks.named('test') {
