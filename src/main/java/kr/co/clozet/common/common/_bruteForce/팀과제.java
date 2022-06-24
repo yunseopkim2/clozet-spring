@@ -37,13 +37,7 @@ public class 팀과제 {
 
         @Override
         public String toString() {
-            return "Solution{" +
-                    "team=" + Arrays.toString(team) +
-                    ", res='" + res + '\'' +
-                    ", subject=" + subject +
-                    ", intArr=" + Arrays.toString(intArr) +
-                    ", resArr=" + Arrays.toString(resArr) +
-                    '}';
+            return res;
         }
     }
     @FunctionalInterface interface SolutionService { Solution solution(Solution s);}
@@ -130,7 +124,7 @@ public class 팀과제 {
         System.out.println(Service.teamSubject.solution(Solution.builder().team(team).build()));
         System.out.println(Service.teamLeaderSubject.solution(Solution.builder().person("김한슬").team(team).build()));
         System.out.println(Service.queueManager.solution(Solution.builder().subject("힙").team(team).build()));
-        Service.subjectCountPerPerson.solution(Solution.builder().intArr(intArr).resArr(resArr).team(team).build());
+        System.out.println();Service.subjectCountPerPerson.solution(Solution.builder().intArr(intArr).resArr(resArr).team(team).build());
     }
 
 }
