@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Scanner;
 
+import static kr.co.clozet.common.lambda.Lambda.choi;
+
 /**
  * packageName: kr.co.clozet.common.common._bruteForce
  * fileName   : 소수찾기
@@ -24,9 +26,9 @@ public class 소수찾기 {
     @Builder @Getter @AllArgsConstructor
     static class Solution{
         private int a;
-
+        private String res;
         @Override public String toString(){
-           return null;
+           return "소수 :" +  res;
         }
 
     }
@@ -34,9 +36,8 @@ public class 소수찾기 {
 
     static class Service{
         static SolutionService solutionService = e ->{
-            int a = 0;
             int count = 0;
-
+            String res = "";
             for (int i = 2; i <= e.a; i++) {
                 for (int j = 2; j <= i; j++) {
                     if (i % j == 0) {
@@ -45,12 +46,12 @@ public class 소수찾기 {
                 }
 
                 if (count == 1) {
-                    System.out.print(i + " ");
+                    res += " " + choi(i);
                 }
                 count = 0;
             }
 
-            return null;
+            return Solution.builder().res(res).build();
         };
     }
 
